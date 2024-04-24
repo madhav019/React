@@ -1,0 +1,32 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "This is a React tutorials",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madhav019/React.git"
+  },
+  "keywords": [],
+  "author": "Madhav Chawla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/madhav019/React/issues"
+  },
+  "homepage": "https://github.com/madhav019/React#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}
