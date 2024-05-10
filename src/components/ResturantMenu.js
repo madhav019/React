@@ -1,41 +1,44 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
-import { MENU_URL } from "../utils/constants";
 import useResturantMenu from "../hooks/useResturantMenu";
+import Journey from "./Journey";
+import Accordian from "./Accordian";
+import AccordianWrapper from "./AccordianWrapper";
 
 const ResturantMenu = () => {
   const { resturantId } = useParams();
 
-  const { metaData } = useResturantMenu(resturantId);
+  const { metaData, menu } = useResturantMenu(resturantId);
 
   return (
-    <div className="body resturant-body">
-      <h2>{metaData?.name}</h2>
-      <div className="resturant-meta-info-bgr">
-        <div className="resturant-meta-info">
-          <div className="rating-rate">
+    <div className="mt-[150px] w-[55vw] h-full flex flex-col mx-auto">
+      <h2 className="font-bold text-2xl">{metaData?.name}</h2>
+
+      <div className="my-10 p-5 pt-0 rounded-3xl bg-gradient-to-t from-gray-200 via-gray-100 to-gray-50">
+        <div className="bg-white rounded-xl p-4 border border-gray-300 flex flex-col gap-2">
+          {/* Rating & Cost */}
+          <div className="flex gap-3 text-md font-bold select-none">
             <h4>{`${metaData?.avgRatingString} (${metaData?.totalRatingsString})`}</h4>
-            <div className="divider"></div>
+            <div className="w-1 h-1 bg-slate-400 rounded-full mt-3"></div>
             <h4>{metaData?.costForTwoMessage || "default"}</h4>
           </div>
-          <p className="cuisines">{metaData?.cuisines?.[0]}</p>
-          <div className="location">
-            <div className="journey">
-              <div className="divider"></div>
-              <div className="divider-line"></div>
-              <div className="divider"></div>
-            </div>
-            <div className="details">
-              <h5 className="area">
-                Outlet <span>{metaData?.areaName}</span>
-              </h5>
-              <h5 className="time">
-                {metaData?.sla?.slaString ?? "Does not deliver"}
-              </h5>
-            </div>
-          </div>
+
+          {/* Cuisines */}
+          <p className="underline text-orange-400">{metaData?.cuisines?.[0]}</p>
+
+          {/* Location & eta */}
+          <Journey
+            items={[
+              metaData?.areaName,
+              metaData?.sla?.slaString ?? "Does not deliver",
+            ]}
+          />
         </div>
       </div>
+
+      {/* Menu */}
+      <h1 className="text-center text-slate-400">MENU</h1>
+      <AccordianWrapper data={menu} />
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { MENU_URL } from "../utils/constants";
 const useResturantMenu = (resturantId) => {
   const [resData, setResData] = useState([]);
   const [metaData, setMetaData] = useState({});
+  const [menu, setMenu] = useState([]);
 
   useEffect(() => {
     fetchMenu();
@@ -16,9 +17,14 @@ const useResturantMenu = (resturantId) => {
 
     setResData(data.data);
     setMetaData(data.data?.cards?.[2]?.card?.card?.info);
+    setMenu(
+      data.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
+        (item) => item?.card?.card?.["@type"].includes("ItemCategory")
+      )
+    );
   };
 
-  return { resData, metaData };
+  return { resData, metaData, menu };
 };
 
 export default useResturantMenu;
