@@ -43,7 +43,7 @@ export const withDiscount = (ResturanCard) => {
   return (props) => {
     const { header, subHeader } = props.data.info.aggregatedDiscountInfoV3;
     return (
-      <div className="relative">
+      <div data-testid="resCard" className="relative">
         <label className="absolute top-36 left-3 font-bold text-white py-1 px-4">{`${header} ${subHeader}`}</label>
         <ResturanCard {...props} />
       </div>

@@ -33,7 +33,7 @@ const cartSlice = createSlice({
       console.log(state); // this will a proxy object
       console.log(current(state)); // this will actually print the state
 
-      state.items.length = 0;
+      Object.keys(state.items).forEach((k) => delete state.items[k]);
     },
   },
 });

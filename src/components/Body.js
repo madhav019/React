@@ -53,18 +53,23 @@ const Body = () => {
 
   return (
     <div className="mt-[110px]">
-      <div className="filter-section">
-        <div className="search-container">
+      <div className="flex justify-between p-5 mx-[5%]">
+        <div className="flex gap-4">
           <input
             onChange={(e) => setSearchText(e.target.value)}
             type="text"
-            className="search-box"
+            className="p-2 outline-none border border-slate-300 rounded-md"
+            placeholder="Search..."
             value={searchText}
           />
-          <button className="search-button">Search</button>
+          <button className="bg-orange-400 p-2 rounded-md text-white">
+            Search
+          </button>
         </div>
         <button
-          className={`filter-btn ${topRatedFiltered && "selected"}`}
+          className={`p-2 rounded-md  shadow-lg ${
+            topRatedFiltered && "bg-orange-400 text-white"
+          }`}
           onClick={() => setTopRatedFiltered((prev) => !prev)}
         >
           Top Rated

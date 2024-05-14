@@ -46,9 +46,9 @@ const Header = () => {
           <li>
             <Link to="cart">Cart ({Object.keys(cartItmes).length})</Link>
           </li>
-          <li onClick={() => setIsSignedIn((prev) => !prev)}>
+          <button onClick={() => setIsSignedIn((prev) => !prev)}>
             {isSignedIn ? "Logout" : "Sign In"}
-          </li>
+          </button>
           <li>{loggedInUser}</li>
           <li>{onlineStatus ? "🟢" : "🔴"}</li>
         </ul>
